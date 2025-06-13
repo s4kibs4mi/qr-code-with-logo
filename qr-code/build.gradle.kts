@@ -79,9 +79,9 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/s4kibs4mi/qr-code-with-logo")
+            url = uri("https://maven.pkg.github.com/" + System.getenv("USERNAME") + "/qr-code-with-logo")
             credentials {
-                username = "s4kibs4mi"
+                username = System.getenv("USERNAME")
                 password = System.getenv("GITHUB_TOKEN")
             }
         }

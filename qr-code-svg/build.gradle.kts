@@ -4,7 +4,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
     `java-library`
-
+    `maven-publish`
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.detekt)
     alias(libs.plugins.ktlint)
@@ -72,8 +72,23 @@ tasks.withType<Detekt>().configureEach {
     }
 }
 
-mavenPublishing {
-    publishToMavenCentral(SonatypeHost.S01)
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+            artifactId = "qr-code-with-logo-svg"
+        }
+    }
 
-    signAllPublications()
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/s4kibs4mi/qr-code-with-logo")
+            credentials {
+                username = "s4kibs4mi"
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
+

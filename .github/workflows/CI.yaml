@@ -46,7 +46,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    if: github.repository == 'SimonScholz/qr-code-with-logo' && github.ref == 'refs/heads/main'
+    if: github.repository == 's4kibs4mi/qr-code-with-logo' && github.ref == 'refs/heads/main'
     needs:
       - kotlin-build
       - java-sample-different-jdks

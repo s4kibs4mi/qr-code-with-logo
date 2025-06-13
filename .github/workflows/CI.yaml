@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 's4kibs4mi/qr-code-with-logo' && github.ref == 'refs/heads/main'
     needs:
-      - kotlin-build
+#      - kotlin-build
       - java-sample-different-jdks
     steps:
       - uses: actions/checkout@v4
